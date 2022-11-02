@@ -12,9 +12,9 @@ export default function PostsList() {
     <Table>
       <TableHead>
           <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Action</TableCell>
+              <TableCell>Nombre</TableCell>
+              <TableCell>Descripcion</TableCell>
+              <TableCell>Accion</TableCell>
           </TableRow>
       </TableHead>
 
