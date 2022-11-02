@@ -25,7 +25,7 @@ export default function PostsForm() {
     })
   }
 
-  const submitForm = async () => {
+  /*const submitForm = async () => {
 
     const res = await fetch("http://localhost:4000/posts", {
                 method: "POST",
@@ -38,6 +38,13 @@ export default function PostsForm() {
 
     dispatch(addPost({
       data      
+    }))
+  }*/
+
+  const submitForm = () => {
+    dispatch(addPost({
+      ...post,
+      id: uuid()      
     }))
   }
 
