@@ -3,6 +3,7 @@ const pool = require('../db')
 const getAllPosts = async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM posts')
+        console.log('hola')
         res.status(200).json(result.rows)
     } catch (error) {
         res.status(500).json(error.message)
@@ -24,10 +25,10 @@ const getPost = async (req, res) => {
 }
 
 const createPost = async (req, res) => {
-    const { name, description } = req.body
+    const { name, description, id } = req.body
     
     try {
-        const result = await pool.query("INSERT INTO posts (name, description) VALUES ($1, $2) RETURNING *", [name, description])
+        const result = await pool.query("INSERT INTO posts (name, description, id) VALUES ($1, $2, $3) RETURNING *", [name, description, id])
         res.json(result.rows[0])
     } catch (err) {
         res.json({error: err.message})
