@@ -2,17 +2,16 @@ import React from 'react'
 import {Box} from '@mui/material'
 import {Container} from '@mui/material'
 import {Toolbar} from '@mui/material'
-//import {Typography} from '@mui/material'
 import {Button} from '@mui/material'
 import { TextField } from '@mui/material'
 import {useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {filterPosts, renderPosts} from '../features/posts/postSlice'
+import {filterPosts} from '../features/posts/postSlice'
 
 export default function FilterPosts() {
 
   const [name, setName] = useState('')  
-  const [posts, setPosts] = useState([])
+  //const [posts, setPosts] = useState([])
 
   const postsState = useSelector(state => state.posts)
   const dispatch = useDispatch()
@@ -36,11 +35,11 @@ export default function FilterPosts() {
   
 
   const handleClick = () => {
-    postsState.map(post => setPosts(post))
+    /*postsState.map(post => setPosts(post))
     console.log('SETPOSTS', posts)
     dispatch(renderPosts(posts))
     console.log('nameParam', name)
-    console.log('HANDLECLICK', postsState)
+    console.log('HANDLECLICK', postsState)*/
     const filterByName = postsState.filter(post => post.name === name.name)
     console.log('FILTERBYNAME', filterByName)
     dispatch(filterPosts(filterByName))

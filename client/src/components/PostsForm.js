@@ -15,7 +15,8 @@ export default function PostsForm() {
 
   const [post, setPost] = useState({
     name: '',
-    description: ''
+    description: '',
+    id: ''
   })
 
   const handleChange = e => {
@@ -25,27 +26,28 @@ export default function PostsForm() {
     })
   }
 
-  /*const submitForm = async () => {
-
+  const fetchPost = async (postData) => {
     const res = await fetch("http://localhost:4000/posts", {
                 method: "POST",
-                body: JSON.stringify(post),
+                body: JSON.stringify(postData),
                 headers: {"Content-Type": "application/json"}
             })
 
             const data = await res.json()
-            console.log(data)
 
     dispatch(addPost({
       data      
     }))
-  }*/
+  }
 
   const submitForm = () => {
-    dispatch(addPost({
-      ...post,
-      id: uuid()      
-    }))
+
+      let postData = {
+        ...post,
+        id: uuid()
+      }
+
+      fetchPost(postData)
   }
 
   return (
