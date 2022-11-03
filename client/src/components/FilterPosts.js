@@ -11,7 +11,6 @@ import {filterPosts} from '../features/posts/postSlice'
 export default function FilterPosts() {
 
   const [name, setName] = useState('')  
-  //const [posts, setPosts] = useState([])
 
   const postsState = useSelector(state => state.posts)
   const dispatch = useDispatch()
@@ -28,18 +27,9 @@ export default function FilterPosts() {
   if (name) {
     disabled= false
   } else {disabled = true}
-
-  /*useEffect(() => {
-    document.addEventListener('keyup', handleChange, true)
-  })*/
   
 
   const handleClick = () => {
-    /*postsState.map(post => setPosts(post))
-    console.log('SETPOSTS', posts)
-    dispatch(renderPosts(posts))
-    console.log('nameParam', name)
-    console.log('HANDLECLICK', postsState)*/
     const filterByName = postsState.filter(post => post.name === name.name)
     console.log('FILTERBYNAME', filterByName)
     dispatch(filterPosts(filterByName))

@@ -34,10 +34,10 @@ const postSlice = createSlice({
     extraReducers: {
         [getPosts.fulfilled]: (state, action) => {
             console.log('payload', action.payload)
+            state.splice(0)
             action.payload.forEach(element => {
                 state.push(element)
             });
-            //state = action.payload
             console.log('state', state)
         }
     }
